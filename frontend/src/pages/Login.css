@@ -49,12 +49,12 @@
   display: flex;
   width: 90vw;
   max-width: 1100px;
-  height: 80vh;
-  max-height: 700px;
+  height: auto;
+  max-height: 90vh;
   min-height: 500px;
   z-index: 1;
   padding: 0; /* Override helios-card padding */
-  overflow: hidden;
+  overflow-y: auto;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(195, 142, 196, 0.1);
 }
 

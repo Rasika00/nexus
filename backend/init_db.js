@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
+const bcrypt = require('bcryptjs');
 
 const dbPath = path.join(__dirname, 'database.sqlite');
 
@@ -17,6 +18,7 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS Users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       email TEXT UNIQUE NOT NULL,
+      password TEXT NOT NULL,
       full_name TEXT NOT NULL,
       role TEXT NOT NULL DEFAULT 'User',
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -54,9 +56,11 @@ db.serialize(() => {
   // Insert seed data
   console.log('Inserting seed data...');
   
-  const stmtUser = db.prepare("INSERT INTO Users (email, full_name, role) VALUES (?, ?, ?)");
-  stmtUser.run("admin@example.com", "Admin User", "Admin");
-  stmtUser.run("john@example.com", "John Doe", "User");
+  const stmtUser = db.prepare("INSERT INTO Users (email, password, full_name, role) VALUES (?, ?, ?, ?)");
+  const hashedAdminPw = bcrypt.hashSync("admin123", 10);
+  const hashedUserPw = bcrypt.hashSync("password", 10);
+  stmtUser.run("admin@example.com", hashedAdminPw, "Admin User", "Admin");
+  stmtUser.run("john@example.com", hashedUserPw, "John Doe", "User");
   stmtUser.finalize();
 
   const stmtProject = db.prepare("INSERT INTO Projects (name, description, status, owner_id) VALUES (?, ?, ?, ?)");

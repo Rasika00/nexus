@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Database, Settings, HelpCircle, Hexagon } from 'lucide-react';
+import { LayoutDashboard, Database, Settings, HelpCircle, Hexagon, Folder, CheckSquare } from 'lucide-react';
 
 const Sidebar = () => {
   return (
@@ -12,12 +12,19 @@ const Sidebar = () => {
       
       <nav className="nav-links">
         <NavLink 
-          to="/" 
+          to="/projects" 
           className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-          end
         >
-          <LayoutDashboard size={18} />
-          <span>Dashboard</span>
+          <Folder size={18} />
+          <span>Projects</span>
+        </NavLink>
+        
+        <NavLink 
+          to="/tasks" 
+          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+        >
+          <CheckSquare size={18} />
+          <span>Tasks</span>
         </NavLink>
         
         <NavLink 
@@ -25,23 +32,10 @@ const Sidebar = () => {
           className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
         >
           <Database size={18} />
-          <span>Management</span>
+          <span>Users</span>
         </NavLink>
+        
       </nav>
-
-      <div className="sidebar-footer">
-        <NavLink 
-          to="/settings" 
-          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-        >
-          <Settings size={18} />
-          <span>Settings</span>
-        </NavLink>
-        <button className="nav-link" style={{ background: 'transparent', textAlign: 'left', width: '100%', cursor: 'pointer' }}>
-          <HelpCircle size={18} />
-          <span>Support</span>
-        </button>
-      </div>
     </aside>
   );
 };

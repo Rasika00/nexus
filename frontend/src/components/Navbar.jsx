@@ -9,18 +9,6 @@ const Navbar = ({ onLogout }) => {
       </div>
 
       <div className="nav-actions">
-        <button className="action-btn" title="Notifications">
-          <Bell size={18} />
-        </button>
-        <button className="action-btn" title="Settings">
-          <Settings size={18} />
-        </button>
-        
-        <div className="nav-search">
-          <Search className="search-icon" size={16} />
-          <input type="text" placeholder="Ask nexusDB anything" />
-        </div>
-
         <div className="user-profile" onClick={onLogout} style={{ cursor: 'pointer' }} title="Click to Logout">
           <div className="avatar">A</div>
           <div className="user-profile-info">
