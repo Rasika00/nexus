@@ -1,3 +1,5 @@
+# 🚀 Nexus — Full-Stack Project & Task Management Platform
+
 ## 📖 About
 
 **Nexus** is a lightweight, responsive full-stack project and task management workspace. It streamlines team collaboration by allowing administrators and team members to organize projects, assign and track tasks with deadlines, and manage user roles within a single glassmorphic dashboard.
