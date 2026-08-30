@@ -1,4 +1,5 @@
 # 🚀 Nexus — Full-Stack Project & Task Management Platform
+<img width="1918" height="867" alt="Screenshot 2026-08-30 140810" src="https://github.com/user-attachments/assets/bf85302f-fe57-4022-9329-c8dc2b72aaef" />
 
 ## 📖 About
 
