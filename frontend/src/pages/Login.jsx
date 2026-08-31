@@ -51,28 +51,34 @@ const Login = ({ onLogin }) => {
       <div className="login-window helios-card animate-fade-in">
         <div className="login-branding">
           <div className="branding-content">
-            <Hexagon className="icon" size={64} style={{ color: 'var(--color-primary)', marginBottom: '1.5rem' }} />
-            <h1 className="text-gradient" style={{ fontSize: '3rem', marginBottom: '1rem' }}>NexusDB</h1>
-            <p>Experience the next generation of database management with AI-driven insights and ultra-fast performance.</p>
+            <div className="branding-header">
+              <Hexagon className="branding-icon" size={32} />
+              <h1 className="text-gradient branding-title">NexusDB</h1>
+            </div>
+            <p className="branding-description">Next-generation database management with AI insights and ultra-fast performance.</p>
           </div>
-          <div className="branding-graphic">
-            <div className="graphic-circle c1"></div>
-            <div className="graphic-circle c2"></div>
-            <div className="graphic-circle c3"></div>
+          
+          <div className="branding-animation-container">
+            <DotLottieReact
+              src="https://lottie.host/e6760eb9-f901-4282-a06c-b6d9efbf7d15/CbLKKzgmN8.lottie"
+              loop
+              autoplay
+              className="lottie-graphic"
+            />
           </div>
         </div>
 
         <div className="login-form-section">
           <div className="login-form-container">
             <div className="login-header">
-              <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <h2>
                 {isRegister ? 'Create Account' : 'Welcome Back'} <span className="waving-hand">👋</span>
               </h2>
               <p>{isRegister ? 'Please fill in the details to sign up.' : 'Please enter your details to sign in.'}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="login-form">
-              {error && <div className="error-message" style={{ color: '#ff4d4f', marginBottom: '1rem', fontSize: '0.9rem', padding: '0.5rem', backgroundColor: 'rgba(255, 77, 79, 0.1)', borderRadius: '4px' }}>{error}</div>}
+              {error && <div className="error-message">{error}</div>}
               
               {isRegister && (
                 <div className="input-group">
@@ -124,35 +130,26 @@ const Login = ({ onLogin }) => {
 
               <button type="submit" className="btn btn-primary login-btn" disabled={isLoading}>
                 {isLoading ? (
-                  <span className="spinner" style={{ width: '20px', height: '20px', display: 'inline-block' }}></span>
+                  <span className="spinner" style={{ width: '18px', height: '18px', display: 'inline-block' }}></span>
                 ) : (
                   <>
                     <span>{isRegister ? 'Sign Up' : 'Sign In'}</span>
-                    <LogIn size={18} />
+                    <LogIn size={16} />
                   </>
                 )}
               </button>
               
-              <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--color-text-secondary)' }}>
+              <div className="toggle-auth-mode">
                 {isRegister ? 'Already have an account? ' : "Don't have an account? "}
                 <a 
                   href="#" 
                   onClick={(e) => { e.preventDefault(); setIsRegister(!isRegister); setError(''); }} 
-                  style={{ color: 'var(--color-primary)', fontWeight: '600' }}
+                  className="toggle-auth-link"
                 >
                   {isRegister ? 'Sign In' : 'Register Now'}
                 </a>
               </div>
             </form>
-          </div>
-          
-          <div className="login-animation-container">
-            <DotLottieReact
-              src="https://lottie.host/e6760eb9-f901-4282-a06c-b6d9efbf7d15/CbLKKzgmN8.lottie"
-              loop
-              autoplay
-              className="lottie-graphic"
-            />
           </div>
         </div>
       </div>
@@ -161,3 +158,4 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
+
