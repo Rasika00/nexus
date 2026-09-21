@@ -130,7 +130,7 @@ const Projects = () => {
         </button>
       </header>
 
-      <div className="helios-card data-container">
+      <div className="nexus-card data-container">
         <div className="table-toolbar">
           <div className="search-box">
             <Search size={18} className="search-icon" />
@@ -212,7 +212,7 @@ const Projects = () => {
 
       {isModalOpen && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-content helios-card">
+          <div className="modal-content nexus-card">
             <div className="modal-header">
               <h2>{selectedProject ? 'Edit Project' : 'Add New Project'}</h2>
               <button className="close-btn" onClick={() => setIsModalOpen(false)}><X size={20} /></button>
@@ -276,7 +276,7 @@ const Projects = () => {
 
       {isDeleteModalOpen && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-content helios-card confirm-modal">
+          <div className="modal-content nexus-card confirm-modal">
             <div className="confirm-icon warning">
               <AlertTriangle size={32} />
             </div>

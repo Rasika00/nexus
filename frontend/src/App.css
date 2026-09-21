@@ -30,7 +30,6 @@
   gap: 1.5rem;
 }
 
-/* Sidebar navigation styling */
 .sidebar {
   width: 280px;
   background: var(--color-bg-app);
@@ -94,7 +93,6 @@
   gap: 0.5rem;
 }
 
-/* Navbar styling */
 .navbar {
   height: 80px;
   display: flex;

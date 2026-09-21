@@ -44,11 +44,10 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="login-container">
-      {/* Animated gradient background layers */}
       <div className="bg-blob blob-1"></div>
       <div className="bg-blob blob-2"></div>
       
-      <div className="login-window helios-card animate-fade-in">
+      <div className="login-window nexus-card animate-fade-in">
         <div className="login-branding">
           <div className="branding-content">
             <div className="branding-header">

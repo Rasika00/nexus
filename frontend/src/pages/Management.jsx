@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Search, Filter, Edit2, Trash2, X, AlertTriangle, CheckCircle } from 'lucide-react';
 import './Management.css';
 
-// Simple Toast Component
 const Toast = ({ message, type, onClose }) => (
   <div className={`toast toast-${type} animate-fade-in`}>
     {type === 'success' ? <CheckCircle size={18} /> : <AlertTriangle size={18} />}
@@ -16,15 +15,11 @@ const Management = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   
-  // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   
-  // Form state
   const [formData, setFormData] = useState({ email: '', full_name: '', role: 'User' });
-  
-  // Toast state
   const [toast, setToast] = useState(null);
 
   const fetchUsers = async () => {
@@ -123,7 +118,7 @@ const Management = () => {
         </button>
       </header>
 
-      <div className="helios-card data-container">
+      <div className="nexus-card data-container">
         <div className="table-toolbar">
           <div className="search-box">
             <Search size={18} className="search-icon" />
@@ -209,10 +204,9 @@ const Management = () => {
         </div>
       </div>
 
-      {/* Add/Edit Modal */}
       {isModalOpen && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-content helios-card">
+          <div className="modal-content nexus-card">
             <div className="modal-header">
               <h2>{selectedUser ? 'Edit User' : 'Add New User'}</h2>
               <button className="close-btn" onClick={() => setIsModalOpen(false)}><X size={20} /></button>
@@ -259,10 +253,9 @@ const Management = () => {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
       {isDeleteModalOpen && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-content helios-card confirm-modal">
+          <div className="modal-content nexus-card confirm-modal">
             <div className="confirm-icon warning">
               <AlertTriangle size={32} />
             </div>

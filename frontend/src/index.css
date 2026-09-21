@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette Tokens */
-  --color-bg-outer: #0A0A0C;      /* Very dark, almost black for the surrounding area */
-  --color-bg-app: #18181B;        /* Dark grey for the main app container */
-  --color-surface: #101014;       /* Slightly darker than app bg for cards */
+  --color-bg-outer: #0A0A0C;
+  --color-bg-app: #18181B;
+  --color-surface: #101014;
   --color-surface-hover: #1E1E22;
   
-  --color-primary: #C38EC4;       /* Soft glowing pink/purple */
+  --color-primary: #C38EC4;
   --color-secondary: #916892;
   --color-accent: #E3BBE4;
   
@@ -15,12 +14,10 @@
   --color-warning: #FBBF24;
   --color-danger: #F87171;
 
-  /* Text Colors */
   --text-primary: #FFFFFF;
   --text-secondary: #A1A1AA;
   --text-muted: #71717A;
 
-  /* Borders & Gradients */
   --border-color: rgba(255, 255, 255, 0.08);
   --border-light: rgba(255, 255, 255, 0.15);
   
@@ -28,19 +25,16 @@
   --gradient-glow: linear-gradient(180deg, rgba(195, 142, 196, 0.15) 0%, rgba(195, 142, 196, 0) 100%);
   --gradient-card: linear-gradient(180deg, #18181C 0%, #101014 100%);
 
-  /* Shadows */
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 25px rgba(195, 142, 196, 0.2);
   --shadow-glow-strong: 0 0 35px rgba(195, 142, 196, 0.4);
 
-  /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-xl: 32px;
   --radius-pill: 9999px;
 
-  /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -82,7 +76,6 @@ a:hover {
   color: var(--color-accent);
 }
 
-/* Card Container Style */
 .nexus-card,
 .helios-card {
   background: var(--gradient-card);
@@ -101,7 +94,6 @@ a:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(195, 142, 196, 0.1);
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
@@ -129,7 +121,6 @@ a:hover {
   animation: spin 1s linear infinite;
 }
 
-/* Typography Utilities */
 .text-gradient {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
@@ -137,7 +128,6 @@ a:hover {
   background-clip: text;
 }
 
-/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -197,7 +187,6 @@ a:hover {
   color: white;
 }
 
-/* Navigation Filter Tabs */
 .pill-tabs {
   display: flex;
   background: var(--color-bg-outer);
@@ -224,7 +213,6 @@ a:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-/* Inputs */
 .input-group {
   display: flex;
   flex-direction: column;
@@ -256,7 +244,6 @@ a:hover {
   color: var(--text-muted);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

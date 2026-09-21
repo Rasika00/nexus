@@ -21,7 +21,6 @@ function App() {
           element={!isAuthenticated ? <Login onLogin={() => setIsAuthenticated(true)} /> : <Navigate to="/" />} 
         />
         
-        {/* Protected Routes */}
         <Route 
           path="/*" 
           element={

@@ -52,18 +52,15 @@ const Dashboard = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Filters & Views
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProjectId, setSelectedProjectId] = useState('ALL');
-  const [viewMode, setViewMode] = useState('kanban'); // 'kanban' | 'list'
+  const [viewMode, setViewMode] = useState('kanban');
 
-  // Modals & Notifications
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [toast, setToast] = useState(null);
 
-  // Form State
   const [formData, setFormData] = useState({
     title: '',
     status: 'Pending',
@@ -104,7 +101,6 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  // Filtered tasks
   const filteredTasks = useMemo(() => {
     return tasks.filter(task => {
       const matchesSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -117,7 +113,6 @@ const Dashboard = () => {
     });
   }, [tasks, searchQuery, selectedProjectId]);
 
-  // Dashboard KPI metrics
   const metrics = useMemo(() => {
     const total = tasks.length;
     const completed = tasks.filter(t => t.status === 'Completed').length;
@@ -129,7 +124,6 @@ const Dashboard = () => {
     return { total, completed, inProgress, pending, blocked, completionRate };
   }, [tasks]);
 
-  // Project progress breakdown
   const projectSummaries = useMemo(() => {
     return projects.map(project => {
       const projectTasks = tasks.filter(t => t.project_id === project.id);
@@ -145,7 +139,6 @@ const Dashboard = () => {
     });
   }, [projects, tasks]);
 
-  // Open Create/Edit modal
   const handleOpenModal = (task = null, defaultStatus = 'Pending') => {
     if (task) {
       setSelectedTask(task);
@@ -169,7 +162,6 @@ const Dashboard = () => {
     setIsModalOpen(true);
   };
 
-  // Submit Task (Create or Update)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -197,7 +189,6 @@ const Dashboard = () => {
     }
   };
 
-  // Quick Status Transition
   const handleQuickStatusChange = async (task, newStatus) => {
     try {
       const res = await fetch(`http://localhost:3001/api/tasks/${task.id}`, {
@@ -223,7 +214,6 @@ const Dashboard = () => {
     }
   };
 
-  // Delete Task
   const handleDelete = async () => {
     try {
       const res = await fetch(`http://localhost:3001/api/tasks/${selectedTask.id}`, {
@@ -241,7 +231,6 @@ const Dashboard = () => {
     }
   };
 
-  // Format Due Date & check overdue
   const checkDueStatus = (dueDate) => {
     if (!dueDate) return { text: 'No due date', status: 'normal' };
     const today = new Date().toISOString().split('T')[0];
@@ -257,7 +246,6 @@ const Dashboard = () => {
     <div className="dashboard-page animate-fade-in">
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
-      {/* Page Header */}
       <header className="dashboard-header">
         <div className="dashboard-title-group">
           <h1>Task Manager Dashboard</h1>
@@ -271,9 +259,8 @@ const Dashboard = () => {
         </div>
       </header>
 
-      {/* KPI Metrics Cards */}
       <div className="metrics-grid">
-        <div className="helios-card metric-card primary">
+        <div className="nexus-card metric-card primary">
           <div className="metric-card-top">
             <span className="metric-label">Total Tasks</span>
             <div className="metric-icon-wrap"><CheckSquare size={20} /></div>
@@ -287,7 +274,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="helios-card metric-card warning">
+        <div className="nexus-card metric-card warning">
           <div className="metric-card-top">
             <span className="metric-label">In Progress</span>
             <div className="metric-icon-wrap"><Clock size={20} /></div>
@@ -301,7 +288,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="helios-card metric-card success">
+        <div className="nexus-card metric-card success">
           <div className="metric-card-top">
             <span className="metric-label">Completed</span>
             <div className="metric-icon-wrap"><CheckCircle2 size={20} /></div>
@@ -315,7 +302,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="helios-card metric-card danger">
+        <div className="nexus-card metric-card danger">
           <div className="metric-card-top">
             <span className="metric-label">Blocked / Attention</span>
             <div className="metric-icon-wrap"><AlertCircle size={20} /></div>
@@ -330,7 +317,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Project Sprints / Progress Strip */}
       {projectSummaries.length > 0 && (
         <section className="projects-strip-section">
           <div className="section-subtitle">
@@ -365,8 +351,7 @@ const Dashboard = () => {
         </section>
       )}
 
-      {/* Toolbar: Search, Project Filter & View Switcher */}
-      <div className="helios-card dashboard-toolbar">
+      <div className="nexus-card dashboard-toolbar">
         <div className="filter-controls">
           <div className="search-box">
             <Search size={18} className="search-icon" />
@@ -408,7 +393,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Main View: Kanban Board vs List Table */}
       {viewMode === 'kanban' ? (
         <div className="kanban-board">
           {Object.entries(STATUS_CONFIG).map(([statusKey, config]) => {
@@ -503,8 +487,7 @@ const Dashboard = () => {
           })}
         </div>
       ) : (
-        /* List View Mode */
-        <div className="helios-card data-container">
+        <div className="nexus-card data-container">
           <div className="table-wrapper">
             <table className="data-table">
               <thead>
@@ -565,10 +548,9 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* Create / Edit Task Modal */}
       {isModalOpen && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-content helios-card">
+          <div className="modal-content nexus-card">
             <div className="modal-header">
               <h2>{selectedTask ? 'Edit Task' : 'Add New Task'}</h2>
               <button className="close-btn" onClick={() => setIsModalOpen(false)}><X size={20} /></button>
@@ -648,10 +630,9 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
       {isDeleteModalOpen && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-content helios-card confirm-modal">
+          <div className="modal-content nexus-card confirm-modal">
             <div className="confirm-icon warning">
               <AlertTriangle size={32} />
             </div>

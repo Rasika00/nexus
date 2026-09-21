@@ -191,7 +191,6 @@
   gap: 0.5rem;
 }
 
-/* Modals */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -260,7 +259,6 @@ select.input-field {
 
 .mt-4 { margin-top: 1rem; }
 
-/* Confirm Modal */
 .confirm-modal {
   max-width: 400px;
   text-align: center;
@@ -289,7 +287,6 @@ select.input-field {
   color: var(--text-secondary);
 }
 
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 4rem 2rem !important;
@@ -323,7 +320,6 @@ select.input-field {
   color: var(--text-secondary);
 }
 
-/* Toast */
 .toast {
   position: fixed;
   bottom: 2rem;
