@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Database, Settings, HelpCircle, Hexagon, Folder, CheckSquare } from 'lucide-react';
+import { LayoutDashboard, Database, Hexagon, Folder, CheckSquare } from 'lucide-react';
 
 const Sidebar = () => {
   return (
@@ -11,6 +11,14 @@ const Sidebar = () => {
       </div>
       
       <nav className="nav-links">
+        <NavLink 
+          to="/dashboard" 
+          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+        >
+          <LayoutDashboard size={18} />
+          <span>Dashboard</span>
+        </NavLink>
+
         <NavLink 
           to="/projects" 
           className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}

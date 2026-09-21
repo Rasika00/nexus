@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
+import Dashboard from './pages/Dashboard';
 import Management from './pages/Management';
 import Projects from './pages/Projects';
 import Tasks from './pages/Tasks';
@@ -31,11 +32,12 @@ function App() {
                   <Navbar onLogout={() => setIsAuthenticated(false)} />
                   <main className="page-content animate-fade-in">
                     <Routes>
-                      <Route path="/" element={<Navigate to="/projects" replace />} />
+                      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                      <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/management/*" element={<Management />} />
                       <Route path="/projects/*" element={<Projects />} />
                       <Route path="/tasks/*" element={<Tasks />} />
-                      <Route path="*" element={<Navigate to="/projects" replace />} />
+                      <Route path="*" element={<Navigate to="/dashboard" replace />} />
                     </Routes>
                   </main>
                 </div>
