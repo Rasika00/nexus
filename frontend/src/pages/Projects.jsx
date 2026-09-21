@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Search, Filter, Edit2, Trash2, X, AlertTriangle, CheckCircle, Folder } from 'lucide-react';
-import './Management.css'; // Reusing the same CSS
+import './Management.css';
 
 const Toast = ({ message, type, onClose }) => (
   <div className={`toast toast-${type} animate-fade-in`}>

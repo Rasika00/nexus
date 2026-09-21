@@ -1,16 +1,16 @@
 {
-  "name": "backend",
+  "name": "nexus-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Express & SQLite Backend REST API for Nexus Task Management",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["sqlite3", "express", "bict", "database-systems"],
+  "author": "Rasika Priyanath",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "bcryptjs": "^3.0.3",

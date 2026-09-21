@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Helios Inspired Colors */
+  /* Color Palette Tokens */
   --color-bg-outer: #0A0A0C;      /* Very dark, almost black for the surrounding area */
   --color-bg-app: #18181B;        /* Dark grey for the main app container */
   --color-surface: #101014;       /* Slightly darker than app bg for cards */
@@ -82,7 +82,8 @@ a:hover {
   color: var(--color-accent);
 }
 
-/* Base Card Style */
+/* Card Container Style */
+.nexus-card,
 .helios-card {
   background: var(--gradient-card);
   border: 1px solid var(--border-color);
@@ -93,6 +94,7 @@ a:hover {
               box-shadow var(--transition-normal);
 }
 
+.nexus-card:hover,
 .helios-card:hover {
   border-color: var(--border-light);
   transform: translateY(-4px);
@@ -195,7 +197,7 @@ a:hover {
   color: white;
 }
 
-/* Pill Tabs (like Market, Wallet, Tools) */
+/* Navigation Filter Tabs */
 .pill-tabs {
   display: flex;
   background: var(--color-bg-outer);

@@ -12,6 +12,7 @@ app.use(express.json());
 
 const dbPath = path.join(__dirname, 'database.sqlite');
 const db = new sqlite3.Database(dbPath);
+db.run('PRAGMA foreign_keys = ON');
 
 // Helper function to handle async DB queries
 const dbAll = (sql, params = []) => {

@@ -13,6 +13,8 @@ if (fs.existsSync(dbPath)) {
 const db = new sqlite3.Database(dbPath);
 
 db.serialize(() => {
+  db.run('PRAGMA foreign_keys = ON');
+
   // Create Users Table
   db.run(`
     CREATE TABLE IF NOT EXISTS Users (
@@ -34,7 +36,7 @@ db.serialize(() => {
       status TEXT NOT NULL DEFAULT 'Active',
       owner_id INTEGER NOT NULL,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (owner_id) REFERENCES Users (id)
+      FOREIGN KEY (owner_id) REFERENCES Users (id) ON DELETE CASCADE
     )
   `);
 
@@ -48,8 +50,8 @@ db.serialize(() => {
       project_id INTEGER NOT NULL,
       assigned_to INTEGER,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (project_id) REFERENCES Projects (id),
-      FOREIGN KEY (assigned_to) REFERENCES Users (id)
+      FOREIGN KEY (project_id) REFERENCES Projects (id) ON DELETE CASCADE,
+      FOREIGN KEY (assigned_to) REFERENCES Users (id) ON DELETE SET NULL
     )
   `);
 

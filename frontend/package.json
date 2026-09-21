@@ -1,7 +1,9 @@
 {
-  "name": "frontend",
+  "name": "nexus-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "React 19 Frontend for Nexus Task Management",
+  "author": "Rasika Priyanath",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -3,9 +3,7 @@ import React from 'react';
 const Navbar = ({ onLogout }) => {
   return (
     <header className="navbar">
-      <div className="nav-header">
-        {/* We can leave this empty or put contextual titles here */}
-      </div>
+      <div className="nav-header"></div>
 
       <div className="nav-actions">
         <div className="user-profile" onClick={onLogout} style={{ cursor: 'pointer' }} title="Click to Logout">
