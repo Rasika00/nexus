@@ -2,7 +2,7 @@
 
 ## 📖 About The Project
 
-**Nexus** is a full-stack, responsive project and task management workspace built for the **ICT 2308: Database Systems** course mini-project. It provides a complete administrative and operational platform that integrates an **Express REST API backend**, a normalized **SQLite relational database**, and a modern **React 19 GUI frontend** with glassmorphic styling.
+**Nexus** is a full-stack, responsive project and task management workspace. It provides a complete administrative and operational platform that integrates an **Express REST API backend**, a normalized **SQLite relational database**, and a modern **React 19 GUI frontend** with glassmorphic styling.
 
 ---
 
