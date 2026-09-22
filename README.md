@@ -1,12 +1,4 @@
-# 🚀 Nexus — Full-Stack Project & Task Management Platform
 
-> **Department of Information & Communication Technology**  
-> **Faculty of Technology, Rajarata University of Sri Lanka**  
-> **Bachelor of Information Communication Technology (BICT) Honors Degree**  
-> **Course**: Database Systems — ICT 2308 (2023 Batch)  
-> **Student**: Rasika Priyanath (`itt2023097@tec.rjt.ac.lk`)  
-
----
 
 ## 📖 About The Project
 
