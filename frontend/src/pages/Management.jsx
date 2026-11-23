@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Search, Filter, Edit2, Trash2, X, AlertTriangle, CheckCircle } from 'lucide-react';
 import './Management.css';
+import { apiFetch } from '../api';
 
 const Toast = ({ message, type, onClose }) => (
   <div className={`toast toast-${type} animate-fade-in`}>
@@ -25,10 +26,10 @@ const Management = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:3001/api/users');
+      const res = await apiFetch('/api/users');
       const data = await res.json();
       setUsers(data);
-    } catch (err) {
+    } catch {
       showToast('Failed to fetch data', 'error');
     } finally {
       setLoading(false);
@@ -63,7 +64,7 @@ const Management = () => {
         : 'http://localhost:3001/api/users';
       const method = selectedUser ? 'PUT' : 'POST';
       
-      const res = await fetch(url, {
+      const res = await apiFetch(url.replace('http://localhost:3001', ''), {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -83,7 +84,7 @@ const Management = () => {
 
   const handleDelete = async () => {
     try {
-      const res = await fetch(`http://localhost:3001/api/users/${selectedUser.id}`, {
+      const res = await apiFetch(`/api/users/${selectedUser.id}`, {
         method: 'DELETE'
       });
       if (res.ok) {

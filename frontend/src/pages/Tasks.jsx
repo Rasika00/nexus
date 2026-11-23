@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Search, Filter, Edit2, Trash2, X, AlertTriangle, CheckCircle, CheckSquare } from 'lucide-react';
 import './Management.css'; 
+import { apiFetch } from '../api';
 
 const Toast = ({ message, type, onClose }) => (
   <div className={`toast toast-${type} animate-fade-in`}>
@@ -28,9 +29,9 @@ const Tasks = () => {
     try {
       setLoading(true);
       const [tasksRes, projRes, usersRes] = await Promise.all([
-        fetch('http://localhost:3001/api/tasks'),
-        fetch('http://localhost:3001/api/projects'),
-        fetch('http://localhost:3001/api/users')
+        apiFetch('/api/tasks'),
+        apiFetch('/api/projects'),
+        apiFetch('/api/users')
       ]);
       const tasksData = await tasksRes.json();
       const projData = await projRes.json();
@@ -38,7 +39,7 @@ const Tasks = () => {
       setTasks(tasksData);
       setProjects(projData);
       setUsers(usersData);
-    } catch (err) {
+    } catch {
       showToast('Failed to fetch data', 'error');
     } finally {
       setLoading(false);
@@ -85,7 +86,7 @@ const Tasks = () => {
         : 'http://localhost:3001/api/tasks';
       const method = selectedTask ? 'PUT' : 'POST';
       
-      const res = await fetch(url, {
+      const res = await apiFetch(url.replace('http://localhost:3001', ''), {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -106,7 +107,7 @@ const Tasks = () => {
 
   const handleDelete = async () => {
     try {
-      const res = await fetch(`http://localhost:3001/api/tasks/${selectedTask.id}`, {
+      const res = await apiFetch(`/api/tasks/${selectedTask.id}`, {
         method: 'DELETE'
       });
       if (res.ok) {

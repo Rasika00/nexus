@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, Database, Hexagon, Folder, CheckSquare } from 'lucide-react';
 
-const Sidebar = () => {
+const Sidebar = ({ user }) => {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
@@ -35,13 +35,15 @@ const Sidebar = () => {
           <span>Tasks</span>
         </NavLink>
         
-        <NavLink 
-          to="/management" 
-          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-        >
-          <Database size={18} />
-          <span>Users</span>
-        </NavLink>
+        {user?.role === 'Admin' && (
+          <NavLink 
+            to="/management" 
+            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          >
+            <Database size={18} />
+            <span>Users</span>
+          </NavLink>
+        )}
         
       </nav>
     </aside>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Hexagon, LogIn } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './Login.css';
+import { apiFetch, setSession } from '../api';
 
 const Login = ({ onLogin }) => {
   const [isRegister, setIsRegister] = useState(false);
@@ -22,7 +23,7 @@ const Login = ({ onLogin }) => {
         ? { email, password, full_name: fullName, role: 'User' }
         : { email, password };
 
-      const res = await fetch(`http://localhost:3001${endpoint}`, {
+      const res = await apiFetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -34,6 +35,7 @@ const Login = ({ onLogin }) => {
         throw new Error(data.error || 'Something went wrong');
       }
 
+      setSession(data);
       onLogin(data);
     } catch (err) {
       setError(err.message);

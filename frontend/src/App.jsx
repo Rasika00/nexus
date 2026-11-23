@@ -7,18 +7,26 @@ import Management from './pages/Management';
 import Projects from './pages/Projects';
 import Tasks from './pages/Tasks';
 import Login from './pages/Login';
+import { getSession, clearSession } from './api';
 import './index.css';
 import './App.css';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [session, setSession] = useState(() => getSession());
+  const isAuthenticated = Boolean(session?.token);
+
+  const handleLogin = (nextSession) => setSession(nextSession);
+  const handleLogout = () => {
+    clearSession();
+    setSession(null);
+  };
 
   return (
     <Router>
       <Routes>
         <Route 
           path="/login" 
-          element={!isAuthenticated ? <Login onLogin={() => setIsAuthenticated(true)} /> : <Navigate to="/" />} 
+          element={!isAuthenticated ? <Login onLogin={handleLogin} /> : <Navigate to="/" />} 
         />
         
         <Route 
@@ -26,14 +34,14 @@ function App() {
           element={
             isAuthenticated ? (
               <div className="app-container">
-                <Sidebar />
+                <Sidebar user={session} />
                 <div className="main-content">
-                  <Navbar onLogout={() => setIsAuthenticated(false)} />
+                  <Navbar onLogout={handleLogout} user={session} />
                   <main className="page-content animate-fade-in">
                     <Routes>
                       <Route path="/" element={<Navigate to="/dashboard" replace />} />
                       <Route path="/dashboard" element={<Dashboard />} />
-                      <Route path="/management/*" element={<Management />} />
+                      <Route path="/management/*" element={session?.role === 'Admin' ? <Management /> : <Navigate to="/dashboard" replace />} />
                       <Route path="/projects/*" element={<Projects />} />
                       <Route path="/tasks/*" element={<Tasks />} />
                       <Route path="*" element={<Navigate to="/dashboard" replace />} />

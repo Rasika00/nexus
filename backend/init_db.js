@@ -22,7 +22,7 @@ db.serialize(() => {
       email TEXT UNIQUE NOT NULL,
       password TEXT NOT NULL,
       full_name TEXT NOT NULL,
-      role TEXT NOT NULL DEFAULT 'User',
+      role TEXT NOT NULL DEFAULT 'User' CHECK (role IN ('Admin', 'Manager', 'User')),
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `);
@@ -33,7 +33,7 @@ db.serialize(() => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
       description TEXT,
-      status TEXT NOT NULL DEFAULT 'Active',
+      status TEXT NOT NULL DEFAULT 'Active' CHECK (status IN ('Active', 'Planning', 'Completed', 'Archived')),
       owner_id INTEGER NOT NULL,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (owner_id) REFERENCES Users (id) ON DELETE CASCADE
@@ -45,7 +45,7 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS Tasks (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,
-      status TEXT NOT NULL DEFAULT 'Pending',
+      status TEXT NOT NULL DEFAULT 'Pending' CHECK (status IN ('Pending', 'In Progress', 'Completed', 'Blocked')),
       due_date DATE,
       project_id INTEGER NOT NULL,
       assigned_to INTEGER,

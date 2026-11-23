@@ -32,6 +32,9 @@
 - Secure registration and login flows.
 - Password encryption powered by **bcryptjs** (salt rounds = 10).
 - Input sanitization and parameterized SQL statements preventing SQL injection attacks.
+- Bearer-token sessions protect API routes.
+- Admin-only authorization protects user management.
+- Login attempts are temporarily throttled after repeated failures.
 
 ---
 
@@ -125,7 +128,7 @@ The database schema is strictly designed and normalized up to **Third Normal For
 | **Backend Runtime** | Node.js | Server runtime |
 | **Server Framework** | Express 5 | RESTful API endpoints and middleware |
 | **Database** | SQLite3 | Normalized relational database with foreign keys |
-| **Security** | bcryptjs | Salted password hashing (10 rounds) |
+| **Security** | bcryptjs + bearer sessions | Password hashing and protected role-based API access |
 | **Code Quality** | Oxlint | Strict code validation and linting |
 
 ---
